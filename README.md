@@ -4,10 +4,10 @@ Unified logging library for OpenClaw Task Router.
 
 ## Features
 
-- 統一的記錄格式
-- 支援 Go 和 Python
-- Request ID 追蹤
-- 非阻塞式記錄
+- Unified log format
+- Support for Go and Python
+- Request ID tracking
+- Non-blocking logging
 
 ## Installation
 
