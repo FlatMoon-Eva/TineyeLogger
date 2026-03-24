@@ -44,11 +44,11 @@ func main() {
     // Output: "req-20260323-150217-38ba17"
 
     // Log receive stage
-    log.LogReceive(requestID, "請幫我翻譯 hello world")
+    log.LogReceive(requestID, "translate hello world for me")
 
     // Log classify stage
     tier := 2
-    log.LogClassify(requestID, tier, "翻譯任務", "simple-brain")
+    log.LogClassify(requestID, tier, "translation task", "simple-brain")
 
     // Log route stage
     log.LogRoute(requestID, "smartllm")
