@@ -34,19 +34,20 @@ type Record struct {
 	Stage        string `json:"stage"`
 	
 	// 選填欄位
-	UserMessage  string `json:"user_message,omitempty"`
-	Tier         *int   `json:"tier,omitempty"`
-	TierReason   string `json:"tier_reason,omitempty"`
-	Model        string `json:"model,omitempty"`
-	ActualModel  string `json:"actual_model,omitempty"`
-	KeyID        string `json:"key_id,omitempty"`
-	InputTokens  int    `json:"input_tokens,omitempty"`
-	OutputTokens int    `json:"output_tokens,omitempty"`
-	LatencyMs    int    `json:"latency_ms,omitempty"`
-	Status       string `json:"status,omitempty"`
-	ErrorMessage string `json:"error_message,omitempty"`
-	FallbackTo   string `json:"fallback_to,omitempty"`
-	Target       string `json:"target,omitempty"`
+	UserMessage     string `json:"user_message,omitempty"`
+	ResponseContent string `json:"response_content,omitempty"`
+	Tier            *int   `json:"tier,omitempty"`
+	TierReason      string `json:"tier_reason,omitempty"`
+	Model           string `json:"model,omitempty"`
+	ActualModel     string `json:"actual_model,omitempty"`
+	KeyID           string `json:"key_id,omitempty"`
+	InputTokens     int    `json:"input_tokens,omitempty"`
+	OutputTokens    int    `json:"output_tokens,omitempty"`
+	LatencyMs       int    `json:"latency_ms,omitempty"`
+	Status          string `json:"status,omitempty"`
+	ErrorMessage    string `json:"error_message,omitempty"`
+	FallbackTo      string `json:"fallback_to,omitempty"`
+	Target          string `json:"target,omitempty"`
 }
 
 // Logger 實例
@@ -152,13 +153,14 @@ func (l *Logger) LogExecute(requestID, model, actualModel, keyID string, inputTo
 }
 
 // LogResponse 記錄回應完成
-func (l *Logger) LogResponse(requestID string, outputTokens, latencyMs int, status string) error {
+func (l *Logger) LogResponse(requestID string, outputTokens, latencyMs int, status, responseContent string) error {
 	return l.Log(&Record{
-		RequestID:    requestID,
-		Stage:        StageResponse,
-		OutputTokens: outputTokens,
-		LatencyMs:    latencyMs,
-		Status:       status,
+		RequestID:       requestID,
+		Stage:           StageResponse,
+		OutputTokens:    outputTokens,
+		LatencyMs:       latencyMs,
+		Status:          status,
+		ResponseContent: responseContent,
 	})
 }
 
